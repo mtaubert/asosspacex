@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodel"
+            type="com.example.asosspacex.ui.viewmodels.listitems.LaunchListItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{viewmodel::showLinks}">
+
+        <ImageView
+            android:id="@+id/link_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/link_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:patchUrl="@{viewmodel.missionPatchURL}"
+            tools:srcCompat="@drawable/ic_image_missing" />
+
+        <TextView
+            android:id="@+id/link_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{viewmodel.missionNameText}"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/link_icon"
+            app:layout_constraintTop_toTopOf="@+id/link_icon"
+            tools:text="Mission Name"/>
+
+        <TextView
+            android:id="@+id/mission_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{viewmodel.dateTimeText}"
+            app:layout_constraintEnd_toEndOf="@+id/link_text"
+            app:layout_constraintStart_toStartOf="@+id/link_text"
+            app:layout_constraintTop_toBottomOf="@+id/link_text"
+            tools:text="Date/Time"/>
+
+        <TextView
+            android:id="@+id/rocket_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{viewmodel.rocketInfoText}"
+            app:layout_constraintEnd_toEndOf="@+id/mission_date"
+            app:layout_constraintStart_toStartOf="@+id/mission_date"
+            app:layout_constraintTop_toBottomOf="@+id/mission_date"
+            tools:text="Rocket Info"/>
+
+        <TextView
+            android:id="@+id/countdown_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{viewmodel.daysText}"
+            app:layout_constraintEnd_toEndOf="@+id/rocket_details"
+            app:layout_constraintStart_toStartOf="@+id/rocket_details"
+            app:layout_constraintTop_toBottomOf="@+id/rocket_details"
+            tools:text="Days till"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:visibility="@{viewmodel.upcomingLaunch ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/link_text"
+            app:layout_constraintTop_toTopOf="@+id/link_text"
+            app:launchSuccess="@{viewmodel.successfulLaunch}"
+            tools:srcCompat="@drawable/ic_check"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

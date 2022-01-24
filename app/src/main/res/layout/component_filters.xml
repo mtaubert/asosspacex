@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.asosspacex.ui.viewmodels.FiltersViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:visibility="@{viewModel.filtersVisible ? View.VISIBLE : View.GONE}"
+        android:clickable="@{viewModel.filtersVisible}"
+        >
+
+        <TextView
+            android:id="@+id/order_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Order"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/ordering_radio_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_title">
+
+            <RadioButton
+                android:id="@+id/order_ascending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::orderingRadioButtonsClicked}"
+                android:checked="@{viewModel.selectedOrderingButtonId == @id/order_ascending}"
+                android:text="@string/filter_order_ascending" />
+
+            <RadioButton
+                android:id="@+id/order_descending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::orderingRadioButtonsClicked}"
+                android:checked="@{viewModel.selectedOrderingButtonId == @id/order_descending}"
+                android:text="@string/filter_order_descending" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/success_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/filter_success_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ordering_radio_buttons" />
+
+        <RadioGroup
+            android:id="@+id/success_radio_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/success_title">
+
+            <RadioButton
+                android:id="@+id/all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::successRadioButtonsClicked}"
+                android:checked="@{viewModel.selectedSuccessButtonId == @id/all}"
+                android:text="@string/filter_success_all" />
+
+            <RadioButton
+                android:id="@+id/success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::successRadioButtonsClicked}"
+                android:checked="@{viewModel.selectedSuccessButtonId == @id/success}"
+                android:text="@string/filter_success_success_only" />
+
+            <RadioButton
+                android:id="@+id/failure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::successRadioButtonsClicked}"
+                android:checked="@{viewModel.selectedSuccessButtonId == @id/failure}"
+                android:text="@string/filter_success_failure_only" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/year_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/filter_year_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/success_radio_buttons" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/years_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adapter="@{viewModel.adapter}"
+            app:gridColumns="@{viewModel.columns}"
+            app:layout_constraintBottom_toTopOf="@+id/apply_filters_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/year_title" />
+
+        <Button
+            android:id="@+id/apply_filters_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/filters_apply"
+            android:onClick="@{viewModel::applyFilters}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

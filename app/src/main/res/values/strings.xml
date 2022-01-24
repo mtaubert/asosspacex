@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ASOS Space X</string>
+    <string name="no_links_found">No links found</string>
+    <string name="could_not_load_launches_data">Could not load launches data</string>
+    <string name="company_title">COMPANY</string>
+    <string name="company_details">%s was founded by %s in %d. It has now %d employees, %d launch sites, and is valued at %s</string>
+    <string name="company_details_missing">SpaceX company details missing</string>
+    <string name="launches_title">LAUNCHES</string>
+    <string name="links_title">Links</string>
+    <string name="filter_order">Order</string>
+    <string name="filter_success">Success</string>
+    <string name="filters_apply">Apply</string>
+    <string name="filter_success_all">All</string>
+    <string name="filter_success_success_only">Success</string>
+    <string name="filter_success_failure_only">Failure</string>
+    <string name="filter_success_title">Show</string>
+    <string name="filter_year_title">Years</string>
+    <string name="filter_order_ascending">Ascending</string>
+    <string name="filter_order_descending">Descending</string>
+    <string name="launch_mission">Mission: %s</string>
+    <string name="launch_date_time">Date/Time: %s at %s</string>
+    <string name="launch_rocket">Rocket: %s/%s</string>
+    <string name="launch_rocket_error">Could not get rocket information</string>
+    <string name="days_until">Days until: %d</string>
+    <string name="days_since">Days since: %d</string>
+    <string name="link_wikipedia">Wikipedia</string>
+    <string name="link_article">Article</string>
+    <string name="link_youtube">Youtube</string>
+    <string name="link_generic">Link</string>
+    <string name="main_title">SpaceX</string>
+</resources>
